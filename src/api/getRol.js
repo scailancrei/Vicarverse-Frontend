@@ -7,7 +7,7 @@ import axios from 'axios'
  * Este componente se encarga de obtener un usuario a partir de la credenciales.
  * @returns {data} contiene la respuesta GET con el usuario y el ROL
  */
-const url = 'http://localhost:4000/api/getRol.php'
+const url = 'https://vicarverse-backend.herokuapp.com/api/getRol.php'
 
 const getRol = async credentials => { //obtenemos el rol
 

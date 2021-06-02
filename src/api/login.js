@@ -6,7 +6,7 @@ import axios from 'axios'
  * Este componente se encarga de obtener un usuario a partir de la credenciales.
  * @returns {data} contiene la respuesta POST con el usuario usando las credenciales
  */
-const url = 'http://localhost:4000/api/index.php'
+const url = 'https://vicarverse-backend.herokuapp.com/api/index.php'
 
 const Login = async credentials => { //Creamos el login
 

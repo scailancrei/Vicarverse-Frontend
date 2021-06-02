@@ -5,7 +5,7 @@ import axios from 'axios'
  * Este componente se encarga de registrar un usuario en la base de datos si no existen ni el nombre de usuario ni el email.
  * @returns retorna true si se ha completado el registro o un mensaje de error en el caso de que no haya sido posible.
  */
- const url = 'http://localhost:4000/api/nuevoUser.php'
+ const url = 'https://vicarverse-backend.herokuapp.com/api/nuevoUser.php'
 
  const RegistrarUsuario = async credentials => { //Creamos el registro
  
