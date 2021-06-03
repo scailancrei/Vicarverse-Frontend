@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import {useHistory} from 'react-router-dom'
 import { Button } from 'react-bootstrap'
 
 import NuevoModal from './modal'
@@ -6,7 +7,7 @@ import NuevoModal from './modal'
 
 export default function Boton(props) {  //Renderiza una modal al hacer un click en el botón
 
-
+    let history = useHistory()
     const [showModal, setShowModal] = useState(false)
     const text = props.text;
 

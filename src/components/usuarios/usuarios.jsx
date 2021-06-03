@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react'
+import { Table } from 'react-bootstrap'
 import { useHistory, useParams } from 'react-router-dom'
 import './usuarios.scss'
 import getAllUsers from '../../api/getAllUsers'
@@ -10,7 +11,7 @@ import TablasUsuarios from './tablasUsuarios'
  * @returns datos
  */
 export default function Usuarios() {
-    const history = useHistory()
+    let history = useHistory()
     const { usuario } = useParams()
     const [rol, setRol] = useState([])
     const [usuarios, setUsuarios] = useState([])
@@ -38,7 +39,6 @@ export default function Usuarios() {
 
     }, [rol.rol, usuarios.length, usuario])
 
-
     if (history.location.state) {
 
         return (
@@ -48,9 +48,10 @@ export default function Usuarios() {
                         <h1>Hola bienvenido {usuario}</h1>
                     </div>
                     <div className="user-List">
-                        <table>
+                        <Table striped bordered hover>
                             <thead>
                                 <tr>
+
                                     <th>
                                         Usuario
                                     </th>
@@ -60,14 +61,25 @@ export default function Usuarios() {
                                     <th>
                                         rol
                                     </th>
+                                    <th>
+                                        Eliminar
+                                    </th>
+                                    <th>
+                                        Editar
+                                    </th>
                                 </tr>
                             </thead>
-                            {
-                                usuarios.map((user) => (
-                                    <TablasUsuarios key={user.id} {...user} />
-                                ))
-                            }
-                        </table>
+                            <tbody>
+                                {
+                                    usuarios.map((user) => {
+                                        let {_id} = user
+                                        let {$oid} = _id
+                                    
+                                        return(<TablasUsuarios key={$oid} {...user} />)
+                                    })
+                                }
+                            </tbody>
+                        </Table>
                     </div>
                 </div>
             </React.Fragment>

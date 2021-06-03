@@ -7,7 +7,6 @@ import RegistrarFormulario from './registrarFormulario'
 export default function NuevoModal(props) {
 
 
-
     const Formulario = (props) => {
         if (props.text === "Acceder") {
             return <LoginFormulario toggle={props.toggle} render={props.render} />

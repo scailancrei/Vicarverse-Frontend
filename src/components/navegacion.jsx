@@ -20,7 +20,7 @@ export default function Navegacion() {
         cerrarSesion()
         return setRenderBoton(!renderBoton)
     }
-    let cerrarSesion = () =>{
+    const cerrarSesion = () =>{
         history.replace('/')
     }
     return (
@@ -33,9 +33,9 @@ export default function Navegacion() {
                     <div className="nav" >      {/* Clase ml-auto para modificar las scss*/}
 
                         <Nav.Item>
-                            {renderBoton ?
+                            {renderBoton  ?
                                 <Button onClick={handleRenderBoton} variant="primary">Cerrar Sesion</Button>
-                                :
+                                : 
                                 <Boton text='Acceder' renderBoton={handleRenderBoton} />
 
                             }

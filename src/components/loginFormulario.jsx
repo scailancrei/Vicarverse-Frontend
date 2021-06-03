@@ -26,9 +26,6 @@ export default function LoginFormulario(props) {
     //Los estados de los componentes del login
 
 
-    
-
-
     let data = {}
 
     const handleSubmit = async (e) => {
@@ -51,15 +48,14 @@ export default function LoginFormulario(props) {
                 }
             }
 
-            
+            sessionStorage.setItem('state', true)
             props.toggle()  //EJECUTO LA FUNCION toggleModal QUE SE PASA COMO PROPS DESDE EL COMPONENTE BOTÓN -> MODAL -> LOGINFORMULARIO. 
                             //Al tener una respuesta se ejecuta la función y pone el valor del estado a false, lo que implica que se cierre la modal
             props.render()
             history.push(location)
-            
-
 
         } else {
+            
             setUsuario('')
             setContraseña('')
             setLoading(false)
