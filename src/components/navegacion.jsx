@@ -14,7 +14,7 @@ import '../styles/navegacion.scss'
 export default function Navegacion() {
     let history = useHistory()
 
-    const [renderBoton, setRenderBoton] = useState(false)
+    const [renderBoton, setRenderBoton] = useState(history.location.state)
 
     const handleRenderBoton = () => {
         cerrarSesion()

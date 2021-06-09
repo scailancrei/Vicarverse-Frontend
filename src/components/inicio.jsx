@@ -2,7 +2,7 @@ import React from 'react'
 import Jumbotron from './jumbotron'
 import Ofertas from './ofertas/Ofertas'
 import Productos from './productos/productos'
-
+import Chat from './chat/chat'
 
 export default function Inicio() {
 
@@ -12,6 +12,7 @@ export default function Inicio() {
             <Jumbotron />
             <Ofertas />
             <Productos />
+            {/* <Chat /> */}
         </div>
     )
 }

@@ -2,20 +2,20 @@ import axios from 'axios'
 
 
 
-//COMPONENTE DE REACT PARA OBTENER EL ROL DEL USUARIO
+//COMPONENTE DE REACT PARA OBTENER LOS DATOS DEL USUARIO
 /**
  * Este componente se encarga de obtener un usuario a partir de la credenciales.
  * @returns {data} contiene la respuesta GET con el usuario y el ROL
  */
-const url = 'https://vicarverse-backend.herokuapp.com/api/getRol.php'
+const url = 'https://vicarverse-php-api.herokuapp.com/getUser.php'
 
-const getRol = async credentials => { //obtenemos el rol
+const getUser = async credentials => { //obtenemos los datos
 
 
     try {
         const data = await axios.get(url, {
             params: {
-                usuario: credentials    //se le pasa el nombre de usuario del cual obtener el rol
+                usuario: credentials    //se le pasa el nombre de usuario
             }
         })
         
@@ -27,4 +27,4 @@ const getRol = async credentials => { //obtenemos el rol
 }
 
 
-export default getRol
+export default getUser

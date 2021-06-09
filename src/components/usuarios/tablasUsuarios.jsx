@@ -1,27 +1,43 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
+import { Button } from 'react-bootstrap'
 
 const TablasUsuarios = (props) => {
     const [edit, setEdit] = useState(false)
-    const [id, setId] = useState([])
 
     const [rol, setRol] = useState(props.rol)
-
-    const { _id } = props
-    const { $oid } = _id
-    id.concat($oid)
+    const [usuario, setUsuario] = useState(props.usuario)
 
 
-    useEffect(() => {
+    const handleDelete = () => {
+        setUsuario(props.usuario)
+        let datos = {
+            usuario: usuario
+        }
+        props.onDelete(datos)
 
-        
+    }
 
+    const handleChange = () => {
 
-    }, [rol])
+        let datos = {
+            usuario: usuario,
+            rol: rol
+        }
+
+        props.onChange(datos)
+        setEdit(!edit)
+    }
+
+    //Función para habilitar los botones de editar y guardar.
+    const handleEdit = () => {
+        setEdit(!edit)
+        setUsuario(props.usuario)
+    }
 
 
     return (
         <>
-            <tr key={$oid} id={id} >
+            <tr key={props.usuario}>
                 <td>
                     {props.usuario}
                 </td>
@@ -30,7 +46,7 @@ const TablasUsuarios = (props) => {
                 </td>
                 <td>
                     {edit ?
-                        <select name="rol" onChange={(e) => setRol(e.target.value)} >
+                        <select value={rol} onChange={(event) => setRol(event.target.value)} >
                             <option value="admin">admin</option>
                             <option value="cliente">cliente</option>
                             <option value="trabajador">trabajador</option>
@@ -42,20 +58,26 @@ const TablasUsuarios = (props) => {
 
                     {
                         props.rol !== 'admin' ?
-                            <button>eliminar</button>
+                            <Button onClick={handleDelete} variant='danger'>eliminar</Button>
                             : ''
                     }
                 </td>
                 <td>
                     {
-                        props.rol !== 'admin' ?
-                            <button onClick={() => {
-                                setEdit(true)
-                            }}>Editar</button>
+                        props.usuario !== 'juan' ?
+                            <Button variant='secondary' onClick={handleEdit}>Editar</Button>
                             : ''
                     }
-
                 </td>
+
+                {
+                    edit &&
+                    <td>
+                        <Button onClick={handleChange}>Guardar</Button>
+                    </td>
+
+                }
+
             </tr>
 
         </>
